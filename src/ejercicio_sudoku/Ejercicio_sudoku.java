@@ -27,6 +27,9 @@ public class Ejercicio_sudoku {
         try {
             su.modificarElemento(2, 4, 7);
             System.out.println(su.toString());
+            su.modificarElemento(3, 5, 7);
+            System.out.println(su.toString());
+            
         } catch (SudokuException ex) {
             Logger.getLogger(Ejercicio_sudoku.class.getName()).log(Level.SEVERE, null, ex);
         }

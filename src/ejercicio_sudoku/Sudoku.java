@@ -48,27 +48,60 @@ public class Sudoku {
 
         return resultadoFinal;
     }
-/**
- * EL metodo modifica un elemento en la posicion indicada del sudoku
- * @param fila el numero de la fila a modificar
- * @param columna el numero de la columna a modificar
- * @param elemento el valor que vamos a añadir al array
- * @throws SudokuException excepcion que se lanza si el valor o la posicion no es valido
- */
+
+    /**
+     * EL metodo modifica un elemento en la posicion indicada del sudoku
+     *
+     * @param fila el numero de la fila a modificar
+     * @param columna el numero de la columna a modificar
+     * @param elemento el valor que vamos a añadir al array
+     * @throws SudokuException excepcion que se lanza si el valor o la posicion
+     * no es valido
+     */
     public void modificarElemento(int fila, int columna, int elemento) throws SudokuException {
-        this.fila.get(fila).set(columna, elemento);
+        if (puedoInsertar(fila, columna, elemento) == true) {
+            this.fila.get(fila).set(columna, elemento);
+        } else {
+            throw new SudokuException("Valor no valido");
+        }
+
     }
 
+    /**
+     * El metodo cambia a cero la posicion dada de la matriz
+     *
+     * @param fila
+     * @param columna
+     */
     public void vaciarElemento(int fila, int columna) {
+        this.fila.get(fila).set(columna, 0);
     }
 
+    /**
+     * EL metodo comprueba que el numero elegido no este en la fila seleccionada
+     *
+     * @param fila
+     * @param elemento
+     * @return devuelve un booleano
+     */
     private boolean comprobarFila(int fila, int elemento) {
         boolean resultado = true;
+        for (int i = 0; i < this.fila.size(); i++) {
+            if (this.fila.get(fila).get(i) == elemento) {
+                resultado = false;
+            }
+        }
         return resultado;
     }
 
     private boolean comprobarColumna(int columna, int elemento) {
         boolean resultado = true;
+        for (int i = 0; i < fila.size(); i++) {
+            if (fila.get(i).get(columna) == elemento) {
+
+                resultado = false;
+            }
+        }
         return resultado;
     }
 
@@ -78,7 +111,11 @@ public class Sudoku {
     }
 
     private boolean puedoInsertar(int fila, int columna, int elemento) {
-        boolean resultado = false;
+        boolean resultado = true;
+        resultado = comprobarFila(fila, elemento);
+        if (resultado == true) {
+            resultado = comprobarColumna(columna, elemento);
+        }
         return resultado;
     }
 }
