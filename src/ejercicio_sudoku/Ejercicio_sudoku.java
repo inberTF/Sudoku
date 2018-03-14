@@ -5,6 +5,9 @@
  */
 package ejercicio_sudoku;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ivan
@@ -15,9 +18,18 @@ public class Ejercicio_sudoku {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
         
         Sudoku su = new Sudoku();
+        su.inicializar();
+        System.out.println(su.toString());
+        
+        try {
+            su.modificarElemento(2, 4, 7);
+            System.out.println(su.toString());
+        } catch (SudokuException ex) {
+            Logger.getLogger(Ejercicio_sudoku.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
