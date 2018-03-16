@@ -22,12 +22,10 @@ public class Ejercicio_sudoku {
         
         Sudoku su = new Sudoku();
         su.inicializar();
-        System.out.println(su.toString());
-        
         try {
-            su.modificarElemento(2, 4, 7);
+            su.modificarElemento(1, 2, 7);
             System.out.println(su.toString());
-            su.modificarElemento(3, 5, 7);
+            su.modificarElemento(0, 1, 7);
             System.out.println(su.toString());
             
         } catch (SudokuException ex) {

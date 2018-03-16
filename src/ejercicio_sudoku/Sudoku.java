@@ -45,7 +45,6 @@ public class Sudoku {
         for (int i = 1; i < fila.size() + 1; i++) {
             resultadoFinal += i + " " + fila.get(i - 1) + "\n";
         }
-
         return resultadoFinal;
     }
 
@@ -94,27 +93,140 @@ public class Sudoku {
         return resultado;
     }
 
+    /**
+     * El metodo comprueba si en la columna indicada esta ya el elemento que le
+     * llega
+     *
+     * @param columna es el numero de la columna
+     * @param elemento es el valor que tiene que comprobar si existe
+     * @return devuelve un booleano dependiendo de si se puede colocar ahi el
+     * valor o no
+     */
     private boolean comprobarColumna(int columna, int elemento) {
         boolean resultado = true;
         for (int i = 0; i < fila.size(); i++) {
             if (fila.get(i).get(columna) == elemento) {
-
                 resultado = false;
             }
         }
         return resultado;
     }
-
+/**
+ * El metodo comprueba si el cuadrante en el que queremos introducir el valor es posible o no
+ * @param fila 
+ * @param columna
+ * @param elemento
+ * @return 
+ */
     private boolean comprobarCuadrante(int fila, int columna, int elemento) {
         boolean resultado = true;
+        if (fila <= 2) {
+            if (columna <= 2) {
+                for (int i = 0; i <= 2; i++) {
+                    for (int j = 0; j <= 2; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+            if (columna == 3 || columna <= 5) {
+                for (int i = 3; i <= 5; i++) {
+                    for (int j = 3; j <= 5; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+            if (columna == 6 || columna <= 8) {
+                for (int i = 6; i <= 8; i++) {
+                    for (int j = 6; j <= 8; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+
+        }
+        if (fila == 3 || fila <= 5) {
+            if (columna <= 2) {
+                for (int i = 0; i <= 2; i++) {
+                    for (int j = 0; j <= 2; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+            if (columna == 3 || columna <= 5) {
+                for (int i = 3; i <= 5; i++) {
+                    for (int j = 3; j <= 5; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+            if (columna == 6 || columna <= 8) {
+                for (int i = 6; i <= 8; i++) {
+                    for (int j = 6; j <= 8; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+        }
+        if (fila == 6 || fila <= 8) {
+            if (columna <= 2) {
+                for (int i = 0; i <= 2; i++) {
+                    for (int j = 0; j <= 2; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+            if (columna == 3 || columna <= 5) {
+                for (int i = 3; i <= 5; i++) {
+                    for (int j = 3; j <= 5; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+            if (columna == 6 || columna <= 8) {
+                for (int i = 6; i <= 8; i++) {
+                    for (int j = 6; j <= 8; j++) {
+                        if (this.fila.get(i).get(j) == elemento) {
+                            resultado = false;
+                        }
+                    }
+                }
+            }
+        }
         return resultado;
     }
-
+/**
+ * El metodo llama uno por uno a todos los metodos para comprobar si es posible introducir el valor en el sudoku
+ * @param fila
+ * @param columna
+ * @param elemento
+ * @return 
+ */
     private boolean puedoInsertar(int fila, int columna, int elemento) {
         boolean resultado = true;
-        resultado = comprobarFila(fila, elemento);
+        if (resultado == true) {
+            resultado = comprobarFila(fila, elemento);
+        }
         if (resultado == true) {
             resultado = comprobarColumna(columna, elemento);
+        }
+        if (resultado == true) {
+            resultado = comprobarCuadrante(fila, columna, elemento);
         }
         return resultado;
     }
