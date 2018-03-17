@@ -22,13 +22,173 @@ public class Sudoku {
     }
 
     /**
-     * El metodo crea el sudoku, aun solo crear una matriz de 9x9 con 0;
+     * El metodo crea el sudoku, solo crea un sudoku siempre el mismo;
      */
     public void inicializar() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                columna.add(0);
+                if (i == 0) {
+                    if (j == 1) {
+                        columna.add(4);
+                    } else {
+                        if (j == 2) {
+                            columna.add(2);
+                        } else {
+                            if (j == 5) {
+                                columna.add(7);
+                            } else {
+                                columna.add(0);
+                            }
+                        }
+                    }
+                } else {
+                    if (i == 1) {
+                        if (j == 1) {
+                            columna.add(3);
+                        } else {
+                            if (j == 2) {
+                                columna.add(5);
+                            } else {
+                                if (j == 6) {
+                                    columna.add(7);
+                                } else {
+                                    if (j == 8) {
+                                        columna.add(4);
+                                    } else {
+                                        columna.add(0);
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if (i == 2) {
+                            if (j == 1) {
+                                columna.add(9);
+                            } else {
+                                columna.add(0);
+                            }
+                        } else {
+                            if (i == 3) {
+                                if (j == 5) {
+                                    columna.add(8);
+                                } else {
+                                    if (j == 5) {
+                                        columna.add(5);
+                                    } else {
+                                        if (j == 5) {
+                                            columna.add(4);
+                                        } else {
+                                            if (j == 5) {
+                                                columna.add(9);
+                                            } else {
+                                                columna.add(0);
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (i == 4) {
+                                    if (j == 0) {
+                                        columna.add(8);
+                                    } else {
+                                        if (j == 4) {
+                                            columna.add(9);
+                                        } else {
+                                            if (j == 5) {
+                                                columna.add(4);
+                                            } else {
+                                                if (j == 6) {
+                                                    columna.add(6);
+                                                } else {
+                                                    if (j == 8) {
+                                                        columna.add(2);
+                                                    } else {
+                                                        columna.add(0);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if (i == 5) {
+                                        if (j == 3) {
+                                            columna.add(3);
+                                        } else {
+                                            if (j == 5) {
+                                                columna.add(6);
+                                            } else {
+                                                if (j == 8) {
+                                                    columna.add(7);
+                                                } else {
+                                                    columna.add(0);
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if (i == 6) {
+                                            if (j == 1) {
+                                                columna.add(1);
+                                            } else {
+                                                if (j == 5) {
+                                                    columna.add(9);
+                                                } else {
+                                                    if (j == 6) {
+                                                        columna.add(4);
+                                                    } else {
+                                                        columna.add(0);
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            if (i == 7) {
+                                                if (j == 3) {
+                                                    columna.add(1);
+                                                } else {
+                                                    if (j == 7) {
+                                                        columna.add(9);
+                                                    } else {
+                                                        if (j == 8) {
+                                                            columna.add(3);
+                                                        } else {
+                                                            columna.add(0);
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                if (i == 8) {
+                                                    if (j == 0) {
+                                                        columna.add(9);
+                                                    } else {
+                                                        if (j == 3) {
+                                                            columna.add(6);
+                                                        } else {
+                                                            if (j == 4) {
+                                                                columna.add(4);
+                                                            } else {
+                                                                if (j == 5) {
+                                                                    columna.add(3);
+                                                                } else {
+                                                                    if (j == 8) {
+                                                                        columna.add(5);
+                                                                    } else {
+                                                                        columna.add(0);
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
+
             fila.add(columna);
             columna = new ArrayList();
         }
@@ -111,13 +271,16 @@ public class Sudoku {
         }
         return resultado;
     }
-/**
- * El metodo comprueba si el cuadrante en el que queremos introducir el valor es posible o no
- * @param fila 
- * @param columna
- * @param elemento
- * @return 
- */
+
+    /**
+     * El metodo comprueba si el cuadrante en el que queremos introducir el
+     * valor es posible o no
+     *
+     * @param fila
+     * @param columna
+     * @param elemento
+     * @return
+     */
     private boolean comprobarCuadrante(int fila, int columna, int elemento) {
         boolean resultado = true;
         if (fila <= 2) {
@@ -210,13 +373,16 @@ public class Sudoku {
         }
         return resultado;
     }
-/**
- * El metodo llama uno por uno a todos los metodos para comprobar si es posible introducir el valor en el sudoku
- * @param fila
- * @param columna
- * @param elemento
- * @return 
- */
+
+    /**
+     * El metodo llama uno por uno a todos los metodos para comprobar si es
+     * posible introducir el valor en el sudoku
+     *
+     * @param fila
+     * @param columna
+     * @param elemento
+     * @return
+     */
     private boolean puedoInsertar(int fila, int columna, int elemento) {
         boolean resultado = true;
         if (resultado == true) {
